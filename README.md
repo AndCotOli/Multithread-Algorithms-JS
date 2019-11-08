@@ -14,4 +14,4 @@ When the process has finished, it will create a text file with the resulet
 - [ ] Quick Sort (work in progress.)
 
 ## Requirements
-- NodeJs v12.13.0
+- NodeJs v12
