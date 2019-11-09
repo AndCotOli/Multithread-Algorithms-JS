@@ -11,7 +11,7 @@ When the process has finished, it will create a text file with the resulet
 ## Implemented Algorithms
 - [x] Prime Generation
 - [x] Merge Sort
-- [ ] Quick Sort (work in progress.)
+- [x] Quick Sort (work in progress.)
 
 ## Requirements
 - NodeJs v12

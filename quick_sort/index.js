@@ -1,23 +1,41 @@
 const {
   Worker,
   isMainThread,
-  workerData,
-  parentPort
+  parentPort,
+  workerData
 } = require('worker_threads');
-const fs = require('fs');
 const os = require('os');
+const fs = require('fs');
 
 const merge = require('../utils/merge');
 
-function mergeSort(arr) {
-  if (arr.length <= 1) return arr;
+function quickSort(arr, low, high) {
+  if (low < high) {
+    pivot = partition(arr, low, high);
 
-  const middle = Math.floor(arr.length / 2);
+    quickSort(arr, low, pivot - 1);
+    quickSort(arr, pivot + 1, high);
+  }
+  return arr;
+}
 
-  const left = arr.slice(0, middle);
-  const right = arr.slice(middle);
+function partition(arr, low, high) {
+  let pivot = arr[high];
 
-  return merge(mergeSort(left), mergeSort(right));
+  let i = low - 1;
+  for (let j = low; j < high; j++) {
+    if (arr[j] < pivot) {
+      i++;
+      let temp = arr[j];
+      arr[j] = arr[i];
+      arr[i] = temp;
+    }
+  }
+  let temp = arr[i + 1];
+  arr[i + 1] = arr[high];
+  arr[high] = temp;
+
+  return i + 1;
 }
 
 if (isMainThread) {
@@ -25,14 +43,15 @@ if (isMainThread) {
   const NUM_CPUS =
     process.argv[2] <= os.cpus().length ? process.argv[2] : os.cpus().length;
   const ARRAY_LENGTH = 10000;
+  console.log(`Running with ${NUM_CPUS} threads...`);
 
   let arr = createArr(ARRAY_LENGTH, 1, 200);
   let result = [];
-  console.log(`Running with ${NUM_CPUS} threads...`);
 
-  const range = Math.ceil(ARRAY_LENGTH / NUM_CPUS);
   const Workers = new Set();
+  let range = Math.ceil(ARRAY_LENGTH / NUM_CPUS);
   let start = 0;
+
   for (let i = 0; i < NUM_CPUS - 1; i++) {
     let workerStart = start;
     let workerArr = arr.slice(workerStart, workerStart + range);
@@ -43,6 +62,7 @@ if (isMainThread) {
     );
     start += range;
   }
+
   let remainingArray = arr.slice(start, start + range);
   Workers.add(
     new Worker(__filename, {
@@ -71,6 +91,6 @@ if (isMainThread) {
     });
   }
 } else {
-  let result = mergeSort(workerData.array);
+  let result = quickSort(workerData.array, 0, workerData.array.length - 1);
   parentPort.postMessage(result);
 }
