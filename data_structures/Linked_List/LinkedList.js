@@ -2,12 +2,19 @@ const LinkedListNode = require('./LinkedListNode');
 const Comparator = require('../../utils/Comparator');
 
 class LinkedList {
+  /**
+   * @param {Function} [comparator] 
+   */
   constructor(comparator) {
     this.head = null;
     this.tail = null;
     this.compare = new Comparator(comparator);
   }
 
+  /**
+   * @param {*} value 
+   * @return {LinkedList}
+   */
   preprend(value) {
     const newNode = new LinkedListNode(value, this.head);
     this.head = newNode;
@@ -16,6 +23,10 @@ class LinkedList {
     return this;
   }
 
+  /**
+   * @param {*} value
+   * @return {LinkedList}
+   */
   append(value) {
     const newNode = new LinkedListNode(value);
     if (!this.head) {
@@ -31,6 +42,10 @@ class LinkedList {
     return this;
   }
 
+  /**
+   * @param {*} value 
+   * @return {LinkedListNode}
+   */
   delete(value) {
     if (!this.head) return null;
 
@@ -59,6 +74,12 @@ class LinkedList {
     return deletedNode;
   }
 
+  /**
+   * @param {Object} findParams
+   * @param {*} findParams.value
+   * @param {Function} [findParams.callback]
+   * @return {LinkedListNode}
+   */
   find({value: undefined, callback: undefined}) {
     if(!this.head) return null;
 
@@ -74,6 +95,9 @@ class LinkedList {
     return null;
   }
 
+  /**
+   * @return {LinkedListNode}
+   */
   deleteTail() {
     const deletedTail = this.tail;
 
@@ -95,6 +119,9 @@ class LinkedList {
     return deletedTail;
   }
 
+  /**
+   * @return {LinkedListNode}
+   */
   deleteHead() {
     if(!this.head) return null;
 
@@ -105,14 +132,23 @@ class LinkedList {
       this.head = null;
       this.tail = null;
     }
+
+    return deletedHead;
   }
 
+  /**
+   * @param {*[]} array
+   * @return {LinkedList} 
+   */
   fromArray(array) {
     array.forEach(val => this.append(val));
 
     return this;
   }
 
+  /**
+   * @return {LinkedList[]}
+   */
   toArray() {
     const result = [];
 
@@ -125,10 +161,17 @@ class LinkedList {
     return result;
   }
 
+  /**
+   * @param {Function} [cb]
+   * @return {String}
+   */
   toString(cb) {
     return this.toArray().map(node => node.toString(cb)).toString()
   }
 
+  /**
+   * @return {LinkedList}
+   */
   reverse() {
     let currentNode = this.head;
     let previousNode = null;
@@ -150,4 +193,4 @@ class LinkedList {
   }
 }
 
-export default LinkedList;
+module.exports = LinkedList;
