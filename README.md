@@ -2,6 +2,8 @@
 
 Some of the most popular algorithms, written using multithread Javascript!
 
+This project was highly inspired by [Javascript Algorithms](https://github.com/trekhleb/javascript-algorithms) by [Oleskii Trekhleb](https://github.com/trekhleb)
+
 ## Usage
 Use `node index.js <Number_of_Cores>` inside the algorithm folder.
 > Note: If you don't specify a number of cores to be used, it will default to all of them.
