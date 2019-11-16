@@ -10,6 +10,13 @@ Use `node index.js <Number_of_Cores>` inside the algorithm folder.
 
 When the process has finished, it will create a text file with the result
 
+## Implemented Data Structures
+- [x] Linked List
+- [x] Queue
+- [x] Stack
+- [x] HashTable
+- [x] Binary Search Tree
+
 ## Implemented Algorithms
 - [x] Prime Generation
 - [x] Merge Sort
