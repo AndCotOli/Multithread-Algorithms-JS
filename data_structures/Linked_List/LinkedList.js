@@ -6,61 +6,64 @@ class LinkedList {
    * @param {Function} [comparator]
    */
   constructor(comparator) {
-    this.head = null;
-    this.tail = null;
-    this.compare = new Comparator(comparator);
+    this._head = null;
+    this._tail = null;
+    this._compare = new Comparator(comparator);
   }
 
   /**
-   * @param {*} value
+   * Inserts a value to the start of the list.
+   * @param {*} value - Value to be inserted.
    * @return {LinkedList}
    */
   preprend(value) {
-    const newNode = new LinkedListNode(value, this.head);
-    this.head = newNode;
-    if (!this.tail) this.tail = newNode;
+    const newNode = new LinkedListNode(value, this._head);
+    this._head = newNode;
+    if (!this._tail) this._tail = newNode;
 
     return this;
   }
 
   /**
-   * @param {*} value
+   * Inserts a value to the end of the list.
+   * @param {*} value - Value to be inserted.
    * @return {LinkedList}
    */
   append(value) {
     const newNode = new LinkedListNode(value);
-    if (!this.head) {
-      this.head = newNode;
-      this.tail = newNode;
+    if (!this._head) {
+      this._head = newNode;
+      this._tail = newNode;
 
       return this;
     }
 
-    this.tail.next = newNode;
-    this.tail = newNode;
+    this._tail.next = newNode;
+    this._tail = newNode;
 
     return this;
   }
 
   /**
-   * @param {*} value
+   * Deletes a value.
+   * @param {*} value - Value to be deleted.
    * @return {LinkedListNode}
    */
   delete(value) {
-    if (!this.head) return null;
+    if (!this._head) return null;
 
     let deletedNode = null;
 
-    while (this.head && this.compare.equal(this.head.value, value)) {
-      deletedNode = this.head;
-      this.head = this.head.next;
+    while (this._head && this._compare.equal(this._head.value, value)) {
+      deletedNode = this._head;
+      this._head = this._head.next;
     }
 
-    let currentNode = this.head;
+    let currentNode = this._head;
 
     if (currentNode !== null) {
       while (currentNode.next) {
-        if (this.compare.equal(currentNode.next.value, value)) {
+        if (this._compare.equal(currentNode.next.value, value)) {
           deletedNode = currentNode.next;
           currentNode.next = currentNode.next.next;
         } else {
@@ -69,25 +72,26 @@ class LinkedList {
       }
     }
 
-    if (this.compare.equal(this.tail.value, value)) this.tail = currentNode;
+    if (this._compare.equal(this._tail.value, value)) this._tail = currentNode;
 
     return deletedNode;
   }
 
   /**
+   * Finds and returns a value in the list.
    * @param {Object} findParams
-   * @param {*} findParams.value
-   * @param {Function} [findParams.callback]
+   * @param {*} findParams.value - Value to be found.
+   * @param {Function} [findParams.callback] - Function to use for checking the value.
    * @return {LinkedListNode}
    */
   find({ value: undefined, callback: undefined }) {
-    if (!this.head) return null;
+    if (!this._head) return null;
 
-    let currentNode = this.head;
+    let currentNode = this._head;
     while (currentNode) {
       if (callback && callback(currentNode.value)) return currentNode;
 
-      if (value !== undefined && this.compare.equal(currentNode.value, value))
+      if (value !== undefined && this._compare.equal(currentNode.value, value))
         return currentNode;
 
       currentNode = currentNode.next;
@@ -97,48 +101,51 @@ class LinkedList {
   }
 
   /**
+   * Deletes the last element from the list.
    * @return {LinkedListNode}
    */
   deleteTail() {
-    const deletedTail = this.tail;
+    const deletedTail = this._tail;
 
-    if (this.head === this.tail) {
-      this.head = null;
-      this.tail = null;
+    if (this._head === this._tail) {
+      this._head = null;
+      this._tail = null;
 
       return deletedTail;
     }
 
-    let currentNode = this.head;
+    let currentNode = this._head;
     while (currentNode.next) {
       if (!currentNode.next.next) currentNode.next = null;
       else currentNode = currentNode.next;
     }
 
-    this.tail = currentNode;
+    this._tail = currentNode;
 
     return deletedTail;
   }
 
   /**
+   * Deletes the first item in the list.
    * @return {LinkedListNode}
    */
   deleteHead() {
-    if (!this.head) return null;
+    if (!this._head) return null;
 
-    const deletedHead = this.head;
+    const deletedHead = this._head;
 
-    if (this.head.next) this.head = this.head.next;
+    if (this._head.next) this._head = this._head.next;
     else {
-      this.head = null;
-      this.tail = null;
+      this._head = null;
+      this._tail = null;
     }
 
     return deletedHead;
   }
 
   /**
-   * @param {*[]} array
+   * Creates a Linked List from an Array of values.
+   * @param {*[]} array - The values array.
    * @return {LinkedList}
    */
   fromArray(array) {
@@ -148,12 +155,13 @@ class LinkedList {
   }
 
   /**
+   * Converts the Linked List to an Array.
    * @return {LinkedList[]}
    */
   toArray() {
     const result = [];
 
-    let currentNode = this.head;
+    let currentNode = this._head;
     while (currentNode) {
       result.push(currentNode);
       currentNode = currentNode.next;
@@ -163,7 +171,8 @@ class LinkedList {
   }
 
   /**
-   * @param {Function} [cb]
+   * Converts the Linked List to a String
+   * @param {Function} [cb] - Callback function
    * @return {String}
    */
   toString(cb) {
@@ -173,10 +182,11 @@ class LinkedList {
   }
 
   /**
+   * Reverses the Linked List.
    * @return {LinkedList}
    */
   reverse() {
-    let currentNode = this.head;
+    let currentNode = this._head;
     let previousNode = null;
     let nextNode = null;
 
@@ -189,8 +199,8 @@ class LinkedList {
       currentNode = nextNode;
     }
 
-    this.tail = this.head;
-    this.head = previousNode;
+    this._tail = this._head;
+    this._head = previousNode;
 
     return this;
   }

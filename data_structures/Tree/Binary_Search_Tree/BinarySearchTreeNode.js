@@ -3,8 +3,8 @@ const Comparator = require('../../../utils/Comparator');
 
 class BinarySearchTreeNode extends TreeNode {
   /**
-   * @param {*} [value]
-   * @param {Function} [compareFunction]
+   * @param {*} [value] - The value of the node
+   * @param {Function} [compareFunction] - The function for comparing values.
    */
   constructor(value = null, compareFunction = undefined) {
     super(value);
@@ -14,6 +14,7 @@ class BinarySearchTreeNode extends TreeNode {
   }
 
   /**
+   * Inserts a new children into the Node.
    * @param {*} value
    * @return {BinarySearchTreeNode}
    */
@@ -41,7 +42,8 @@ class BinarySearchTreeNode extends TreeNode {
   }
 
   /**
-   * @param {*} value
+   * Returns one node with the specified value.
+   * @param {*} value - The value to be found.
    * @return {BinarySearchTreeNode}
    */
   find(value) {
@@ -55,7 +57,8 @@ class BinarySearchTreeNode extends TreeNode {
   }
 
   /**
-   * @param {*} value
+   * Checks if the Node has a children with a specified value.
+   * @param {*} value - The value to be found.
    * @return {Boolean}
    */
   contains(value) {
@@ -63,7 +66,8 @@ class BinarySearchTreeNode extends TreeNode {
   }
 
   /**
-   * @param {*} value
+   * Removes a children Node that has an specified value.
+   * @param {*} value - The value to be removed.
    * @return {Boolean}
    */
   remove(value) {
@@ -98,6 +102,7 @@ class BinarySearchTreeNode extends TreeNode {
   }
 
   /**
+   * Returns the children with the smalles value.
    * @return {BinarySearchTreeNode}
    */
   findMin() {

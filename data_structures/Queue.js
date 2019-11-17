@@ -6,6 +6,7 @@ class Queue {
   }
 
   /**
+   * Checks if the Queue is empty.
    * @return {Boolean}
    */
   isEmpty() {
@@ -13,6 +14,7 @@ class Queue {
   }
 
   /**
+   * Returns the first element in the Queue, without removing it.
    * @return {*}
    */
   peek() {
@@ -22,13 +24,15 @@ class Queue {
   }
 
   /**
-   * @param {*} value
+   * Adds an element to the Queue.
+   * @param {*} value - The element that has to be added.
    */
   enqueue(value) {
     this._linkedlist.append(value);
   }
 
   /**
+   * Removes and returns the first item in the Queue.
    * @return {*}
    */
   dequeue() {
@@ -37,6 +41,7 @@ class Queue {
   }
 
   /**
+   * Converts the Queue into an Array.
    * @return {*[]}
    */
   toArray() {
@@ -44,7 +49,8 @@ class Queue {
   }
 
   /**
-   * @param {Function} [callback]
+   * Converts the Queue into a String.
+   * @param {Function} [callback] - The callback function.
    * @return {String}
    */
   toString(callback) {

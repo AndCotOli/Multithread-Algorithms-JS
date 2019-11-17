@@ -7,7 +7,7 @@ const {
 const os = require('os');
 const fs = require('fs');
 
-const merge = require('../utils/merge');
+const merge = require('../../utils/merge');
 
 function quickSort(arr, low, high) {
   if (low < high) {
@@ -39,7 +39,7 @@ function partition(arr, low, high) {
 }
 
 if (isMainThread) {
-  const createArr = require('../utils/createArr');
+  const createArr = require('../../utils/createArr');
   const NUM_CPUS =
     process.argv[2] <= os.cpus().length ? process.argv[2] : os.cpus().length;
   const ARRAY_LENGTH = 10000;

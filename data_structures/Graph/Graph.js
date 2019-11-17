@@ -1,6 +1,6 @@
 class Graph {
   /**
-   * @param {Boolean} [isDirect]
+   * @param {Boolean} [isDirect] 
    */
   constructor(isDirect = false) {
     this.vertices = {};

@@ -1,9 +1,8 @@
 class GraphEdge {
   /**
-   *
-   * @param {GraphVertex} start
-   * @param {GraphVertex} end
-   * @param {Number} [weight]
+   * @param {GraphVertex} start - The starting vertex.
+   * @param {GraphVertex} end - The end vertex.
+   * @param {Number} [weight] - The weight of the Graph.
    */
   constructor(start, end, weight = 0) {
     this._startVertex = start;
@@ -12,6 +11,7 @@ class GraphEdge {
   }
 
   /**
+   * Returns key associated to the Edge.
    * @return {String}
    */
   getKey() {
@@ -22,6 +22,7 @@ class GraphEdge {
   }
 
   /**
+   * Reverses the Edge.
    * @return {GraphEdge}
    */
   reverse() {
@@ -33,6 +34,7 @@ class GraphEdge {
   }
 
   /**
+   * Converts the Edge into a String.
    * @return {String}
    */
   toString() {

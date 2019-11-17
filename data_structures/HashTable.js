@@ -3,9 +3,9 @@ const PolynomialHash = require('../utils/PolynomialHash');
 
 class HashTable {
   /**
-   * @param {Number} size
+   * @param {Number} size - The size of the table.
    */
-  constructor(size = 32) {
+  constructor(size = 128) {
     this._buckets = Array(size).map(() => new LinkedList());
     this._keys = {};
 
@@ -13,7 +13,8 @@ class HashTable {
   }
 
   /**
-   * @param {String} key
+   * Hashes a word.
+   * @param {String} key - The word to hash.
    * @return {Number}
    */
   hash(key) {
@@ -21,8 +22,9 @@ class HashTable {
   }
 
   /**
-   * @param {String} key
-   * @param {*} value
+   * Adds/Updates a key-value pair in the Table.
+   * @param {String} key - The table key.
+   * @param {*} value - The key value.
    */
   set(key, value) {
     const keyHash = this.hash(key);
@@ -36,7 +38,8 @@ class HashTable {
   }
 
   /**
-   * @param {String} key
+   * Deletes a key-value pair from the Table.
+   * @param {String} key - The key to be deleted.
    * @return {*}
    */
   delete(key) {
@@ -51,7 +54,8 @@ class HashTable {
   }
 
   /**
-   * @param {String} key
+   * Return the value paired with a key.
+   * @param {String} key - The key to get the value from.
    * @return {*}
    */
   get(key) {
@@ -62,7 +66,8 @@ class HashTable {
   }
 
   /**
-   * @param {String} key
+   * Checks if the Table contains a key.
+   * @param {String} key - The key that has be checked.
    * @return {Boolean}
    */
   has(key) {
@@ -70,6 +75,7 @@ class HashTable {
   }
 
   /**
+   * Returns an Array of all the keys.
    * @return {String[]}
    */
   getKeys() {

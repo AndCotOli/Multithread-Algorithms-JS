@@ -6,6 +6,7 @@ class Stack {
   }
 
   /**
+   * Checks if the Stack is empty.
    * @return {Boolean}
    */
   isEmpty() {
@@ -13,6 +14,7 @@ class Stack {
   }
 
   /**
+   * Returns the first item in the Stack, without removing it.
    * @return {*}
    */
   peek() {
@@ -22,13 +24,15 @@ class Stack {
   }
 
   /**
-   * @param {*} value
+   * Adds an item to the Stack.
+   * @param {*} value - The item to be added.
    */
   push(value) {
     this._linkedList.preprend(value);
   }
 
   /**
+   * Removes and returns the first item in the Stack.
    * @return {*}
    */
   pop() {
@@ -37,6 +41,7 @@ class Stack {
   }
 
   /**
+   * Converts the Stack into an Array.
    * @return {*[]}
    */
   toArray() {
@@ -44,7 +49,8 @@ class Stack {
   }
 
   /**
-   * @param {Function} [callback]
+   * Converts the String into a String.
+   * @param {Function} [callback] - The callback function.
    * @return {String}
    */
   toString(callback) {

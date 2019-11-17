@@ -3,7 +3,7 @@ const HashTable = require('../HashTable');
 
 class TreeNode {
   /**
-   * @param {*} [value]
+   * @param {*} [value] - The value of the node.
    */
   constructor(value = null) {
     this._left = null;
@@ -16,6 +16,7 @@ class TreeNode {
   }
 
   /**
+   * Returns the depth of the left branch.
    * @return {Number}
    */
   get leftHeight() {
@@ -23,6 +24,7 @@ class TreeNode {
   }
 
   /**
+   * Returns the depth of the right branch.
    * @return {Number}
    */
   get rightHeight() {
@@ -30,6 +32,7 @@ class TreeNode {
   }
 
   /**
+   * Returns the maximum depth of the Node
    * @return {Number}
    */
   get height() {
@@ -37,6 +40,7 @@ class TreeNode {
   }
 
   /**
+   * Returns the balance factor of the node.
    * @return {Number}
    */
   get balanceFactor() {
@@ -44,6 +48,7 @@ class TreeNode {
   }
 
   /**
+   * Returns the uncle (parent of the parent) of the node.
    * @return {TreeNode}
    */
   get uncle() {
@@ -61,7 +66,8 @@ class TreeNode {
   }
 
   /**
-   * @param {*} value
+   * Sets the value of the Node
+   * @param {*} value - The value to be set.
    * @return {TreeNode}
    */
   setValue(value) {
@@ -70,7 +76,8 @@ class TreeNode {
   }
 
   /**
-   * @param {TreeNode} node
+   * Sets the Left node.
+   * @param {TreeNode} node - The node to be set.
    * @return {TreeNode}
    */
   setLeft(node) {
@@ -84,7 +91,8 @@ class TreeNode {
   }
 
   /**
-   * @param {TreeNode} node
+   * Sets the Right node.
+   * @param {TreeNode} node - The node to be set.
    * @return {TreeNode}
    */
   setRight(node) {
@@ -98,7 +106,8 @@ class TreeNode {
   }
 
   /**
-   * @param {TreeNode} node
+   * Removes one branch of the Node
+   * @param {TreeNode} node - The branch to be removed.
    * @return {Boolean}
    */
   removeChild(node) {
@@ -114,8 +123,9 @@ class TreeNode {
   }
 
   /**
-   * @param {TreeNode} nodeToReplace
-   * @param {TreeNode} replacementNode
+   * Replaces a Node branch with a new Node.
+   * @param {TreeNode} nodeToReplace - The node to be replaced.
+   * @param {TreeNode} replacementNode - The node to add.
    * @return {Boolean}
    */
   replaceChild(nodeToReplace, replacementNode) {
@@ -136,9 +146,9 @@ class TreeNode {
   }
 
   /**
-   *
-   * @param {TreeNode} source
-   * @param {TreeNode} target
+   * Copies one node to another one.
+   * @param {TreeNode} source - The node to get the data.
+   * @param {TreeNode} target - The node to copy on.
    */
   static copyNode(source, target) {
     target.setValue(source._value);
@@ -147,6 +157,7 @@ class TreeNode {
   }
 
   /**
+   * Traverses and converts the Node into an Array.
    * @return {*[]}
    */
   traverseInOrder() {
@@ -161,6 +172,7 @@ class TreeNode {
   }
 
   /**
+   * Converts the node into a String.
    * @return {String}
    */
   toString() {

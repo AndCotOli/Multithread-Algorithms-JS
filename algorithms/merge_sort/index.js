@@ -7,7 +7,7 @@ const {
 const fs = require('fs');
 const os = require('os');
 
-const merge = require('../utils/merge');
+const merge = require('../../utils/merge');
 
 function mergeSort(arr) {
   if (arr.length <= 1) return arr;
@@ -21,7 +21,7 @@ function mergeSort(arr) {
 }
 
 if (isMainThread) {
-  const createArr = require('../utils/createArr');
+  const createArr = require('../../utils/createArr');
   const NUM_CPUS =
     process.argv[2] <= os.cpus().length ? process.argv[2] : os.cpus().length;
   const ARRAY_LENGTH = 10000;

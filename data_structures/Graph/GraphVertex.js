@@ -2,7 +2,7 @@ const LinkedList = require('../Linked_List/LinkedList');
 
 class GraphVertex {
   /**
-   * @param {*} value
+   * @param {*} value - The value of the Vertex.
    */
   constructor(value) {
     if (value === undefined) throw new Error('Graph Vertex must have a value!');
@@ -20,7 +20,8 @@ class GraphVertex {
   }
 
   /**
-   * @param {GraphEdge} edge
+   * Adds a new edge to the Vertex.
+   * @param {GraphEdge} edge - The vertex to be added.
    * @return {GraphVertex}
    */
   addEdge(edge) {
@@ -29,14 +30,15 @@ class GraphVertex {
   }
 
   /**
-   *
-   * @param {GraphEdge} edge
+   * Deletes an specified edge.
+   * @param {GraphEdge} edge - The edge to be removed.
    */
   deleteEdge(edge) {
     this._edges.delete(edge);
   }
 
   /**
+   * Returns an Array of the Vertex's neighbors.
    * @return {GraphVertex[]}
    */
   getNeighbors() {
@@ -50,6 +52,7 @@ class GraphVertex {
   }
 
   /**
+   * Returns and array with the Edges of the Vertex.
    * @return {GraphEdge[]}
    */
   getEdges() {
@@ -57,6 +60,7 @@ class GraphVertex {
   }
 
   /**
+   * Returns the degree of the Vertex.
    * @return {Number}
    */
   getDegree() {
@@ -64,7 +68,8 @@ class GraphVertex {
   }
 
   /**
-   * @param {GraphEdge} edgeToFind
+   * Checks if the Vertex has a specified Edge.
+   * @param {GraphEdge} edgeToFind - The Edge to find.
    * @return {Boolean}
    */
   hasEdge(edgeToFind) {
@@ -76,7 +81,8 @@ class GraphVertex {
   }
 
   /**
-   * @param {GraphVertex} vertex
+   * Checks if the Vertex has a specified neighbor.
+   * @param {GraphVertex} vertex - The vertex to find.
    * @return {Boolean}
    */
   hasNeighbor(vertex) {
@@ -89,7 +95,8 @@ class GraphVertex {
   }
 
   /**
-   * @param {GraphVertex} vertex
+   * Returns the value of a specified Vertex.
+   * @param {GraphVertex} vertex - The vertex to be found-
    * @return {GraphVertex}
    */
   findEdge(vertex) {
@@ -102,6 +109,7 @@ class GraphVertex {
   }
 
   /**
+   * Returns the value of the Vertex.
    * @return {*}
    */
   getKey() {
@@ -109,6 +117,7 @@ class GraphVertex {
   }
 
   /**
+   * Deletes all the Edges.
    * @return {GraphVertex}
    */
   deleteAllEdges() {
@@ -118,7 +127,8 @@ class GraphVertex {
   }
 
   /**
-   * @param {Function} [callback]
+   * Converts the Vertex into a String.
+   * @param {Function} [callback] - The callback function.
    * @return {String}
    */
   toString(callback) {

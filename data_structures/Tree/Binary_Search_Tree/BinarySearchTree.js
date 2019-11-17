@@ -1,6 +1,9 @@
 const BinarySearchTreeNode = require('./BinarySearchTreeNode');
 
 class BinarySearchTree {
+  /**
+   * @param {Function} valueComparator - The comparator function for values.
+   */
   constructor(valueComparator) {
     this.root = new BinarySearchTreeNode(null, valueComparator);
 
@@ -8,7 +11,8 @@ class BinarySearchTree {
   }
 
   /**
-   * @param {*} value
+   * Insertes a new Node into the Tree.
+   * @param {*} value - The value for the Node.
    * @return {BinarySearchTreeNode}
    */
   insert(value) {
@@ -16,7 +20,8 @@ class BinarySearchTree {
   }
 
   /**
-   * @param {*} value
+   * Checks if the Tree contains a Node with an specified value.
+   * @param {*} value - The value to be checked.
    * @return {Boolean}
    */
   contains(value) {
@@ -24,6 +29,7 @@ class BinarySearchTree {
   }
 
   /**
+   * Removes a value from the Tree.
    * @param {*} value
    * @return {Boolean}
    */
@@ -32,6 +38,7 @@ class BinarySearchTree {
   }
 
   /**
+   * Converts the Tree into a String.
    * @return {String}
    */
   toString() {
