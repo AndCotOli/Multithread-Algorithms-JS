@@ -3,7 +3,7 @@ const Comparator = require('../../utils/Comparator');
 
 class LinkedList {
   /**
-   * @param {Function} [comparator] 
+   * @param {Function} [comparator]
    */
   constructor(comparator) {
     this.head = null;
@@ -12,7 +12,7 @@ class LinkedList {
   }
 
   /**
-   * @param {*} value 
+   * @param {*} value
    * @return {LinkedList}
    */
   preprend(value) {
@@ -43,7 +43,7 @@ class LinkedList {
   }
 
   /**
-   * @param {*} value 
+   * @param {*} value
    * @return {LinkedListNode}
    */
   delete(value) {
@@ -80,14 +80,15 @@ class LinkedList {
    * @param {Function} [findParams.callback]
    * @return {LinkedListNode}
    */
-  find({value: undefined, callback: undefined}) {
-    if(!this.head) return null;
+  find({ value: undefined, callback: undefined }) {
+    if (!this.head) return null;
 
     let currentNode = this.head;
-    while(currentNode) {
-      if(callback && callback(currentNode.value)) return currentNode;
+    while (currentNode) {
+      if (callback && callback(currentNode.value)) return currentNode;
 
-      if(value !== undefined && this.compare.equal(currentNode.value, value)) return currentNode;
+      if (value !== undefined && this.compare.equal(currentNode.value, value))
+        return currentNode;
 
       currentNode = currentNode.next;
     }
@@ -101,16 +102,16 @@ class LinkedList {
   deleteTail() {
     const deletedTail = this.tail;
 
-    if(this.head === this.tail) {
+    if (this.head === this.tail) {
       this.head = null;
       this.tail = null;
-      
+
       return deletedTail;
     }
-    
+
     let currentNode = this.head;
     while (currentNode.next) {
-      if(!currentNode.next.next) currentNode.next = null;
+      if (!currentNode.next.next) currentNode.next = null;
       else currentNode = currentNode.next;
     }
 
@@ -123,11 +124,11 @@ class LinkedList {
    * @return {LinkedListNode}
    */
   deleteHead() {
-    if(!this.head) return null;
+    if (!this.head) return null;
 
     const deletedHead = this.head;
 
-    if(this.head.next) this.head = this.head.next;
+    if (this.head.next) this.head = this.head.next;
     else {
       this.head = null;
       this.tail = null;
@@ -138,7 +139,7 @@ class LinkedList {
 
   /**
    * @param {*[]} array
-   * @return {LinkedList} 
+   * @return {LinkedList}
    */
   fromArray(array) {
     array.forEach(val => this.append(val));
@@ -153,7 +154,7 @@ class LinkedList {
     const result = [];
 
     let currentNode = this.head;
-    while(currentNode) {
+    while (currentNode) {
       result.push(currentNode);
       currentNode = currentNode.next;
     }
@@ -166,7 +167,9 @@ class LinkedList {
    * @return {String}
    */
   toString(cb) {
-    return this.toArray().map(node => node.toString(cb)).toString()
+    return this.toArray()
+      .map(node => node.toString(cb))
+      .toString();
   }
 
   /**
@@ -177,7 +180,7 @@ class LinkedList {
     let previousNode = null;
     let nextNode = null;
 
-    while(currentNode) {
+    while (currentNode) {
       nextNode = currentNode.next;
 
       currentNode.next = previousNode;
