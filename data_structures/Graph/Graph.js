@@ -3,9 +3,9 @@ class Graph {
    * @param {Boolean} [isDirected]
    */
   constructor(isDirected = false) {
-    this.vertices = {};
-    this.edges = {};
-    this.isDirected = isDirected;
+    this._vertices = {};
+    this._edges = {};
+    this._isDirected = isDirected;
   }
 
   /**
@@ -14,7 +14,7 @@ class Graph {
    * @return {Graph}
    */
   addVertex(vertex) {
-    this.vertices[vertex.getKey()] = vertex;
+    this._vertices[vertex.getKey()] = vertex;
 
     return this;
   }
@@ -25,7 +25,7 @@ class Graph {
    * @return {GraphVertex}
    */
   getVertexByKey(key) {
-    return this.vertices[key];
+    return this._vertices[key];
   }
 
   /**
@@ -42,7 +42,7 @@ class Graph {
    * @return {GraphVertex[]}
    */
   getAllVertices() {
-    return Object.values(this.vertices);
+    return Object.values(this._vertices);
   }
 
   /**
@@ -50,7 +50,7 @@ class Graph {
    * @return {GraphEdge[]}
    */
   getAllEdges() {
-    return Object.values(this.edges);
+    return Object.values(this._edges);
   }
 
   /**
@@ -72,11 +72,11 @@ class Graph {
       endVertex = this.getVertexByKey(edge._endVertex.getKey());
     }
 
-    if (this.edges[edge.getKey()])
+    if (this._edges[edge.getKey()])
       throw new Error('Edge has been added before.');
-    else this.edges[edge.getkey()] = edge;
+    else this._edges[edge.getkey()] = edge;
 
-    if (this.isDirected) startVertex.addEdge(edge);
+    if (this._isDirected) startVertex.addEdge(edge);
     else {
       startVertex.addEdge(edge);
       endVertex.addEdge(edge);
@@ -89,7 +89,7 @@ class Graph {
    * @param {GraphEdge} edge - The edge to be deleted.
    */
   deleteEdge(edge) {
-    if (this.edges[edge.getKey()]) delete this.edges[edge.getKey()];
+    if (this._edges[edge.getKey()]) delete this._edges[edge.getKey()];
     else throw new Error('The edge is not in the graph.');
 
     const startVertex = this.getVertexByKey(edge._startVertex.getKey());
